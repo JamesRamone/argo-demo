@@ -9,7 +9,7 @@ server:
     source:
       repoURL: https://github.com/JamesRamone/argo-demo.git
       targetRevision: HEAD
-      path: /
+      path: apps
       directory:
         recurse: true
     destination:
@@ -19,6 +19,22 @@ server:
       automated:
         prune: false
         selfHeal: false
+  - name: projects
+    namespace: argocd
+    destination:
+      namespace: argocd
+      server: https://kubernetes.default.svc
+    project: default
+    source:
+      path: projects
+      repoURL: https://github.com/JamesRamone/argo-demo.git
+      targetRevision: HEAD
+      directory:
+        recurse: true
+    syncPolicy:
+      automated:
+        selfHeal: true
+        prune: true
 
   additionalProjects:
   - name: cluster-addons

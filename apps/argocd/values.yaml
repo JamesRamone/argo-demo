@@ -7,9 +7,9 @@ server:
     - resources-finalizer.argocd.argoproj.io
     project: cluster-addons
     source:
-      repoURL: https://github.com/JamesRamone/argocd-demo.git
+      repoURL: https://github.com/JamesRamone/argo-demo.git
       targetRevision: HEAD
-      path: apps
+      path: /
       directory:
         recurse: true
     destination:
